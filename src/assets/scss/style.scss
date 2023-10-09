@@ -1,0 +1,788 @@
+/* reset*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/******** Mixin pour le responsive *********/
+@mixin extra-small {
+    @media (max-width: 480px) {
+        @content;
+    }
+}
+
+@mixin small {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media (min-width: 768px) and (max-width: 992px) {
+        @content;
+    }
+}
+
+@mixin large {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin extra-large {
+    @media (min-width: 1400px) {
+        @content;
+    }
+}
+
+
+/* Mixin button */
+@mixin pink-button-style {
+    background-color: $pink;
+    border-radius: 50px;
+    color: $white;
+    font-size: 16px;
+    padding: 10px 30px;
+    text-decoration: none !important;
+    border: 2px solid $pink;
+    &:hover {
+        border: 2px solid $pink;
+        color: $pink;
+    }
+}
+
+/* Couleurs */
+$pink : #FF6D74;
+$black : #000000;
+$white : #FFFFFF;
+$blueLight : #007C9F;
+$blueDark : #1E3557;
+$blueExtraLight : #61DAFB;
+$greenNodeJs: #83CD29;
+$greenVueJs: #41B883;
+$colorBarTitles: #A7D8DB;
+$fondColor: #F5F5F5;
+
+
+/* Class génériques */
+.pink {
+    color: $pink;
+}
+.blue {
+    color: $colorBarTitles;
+}
+.blueDark {
+    color: $blueDark;
+}
+.blueLight {
+    color: $blueLight;
+}
+.white {
+    color: $white;
+}
+.header-top {
+   box-shadow: 0 0 30px rgba(115,128,157,.3);
+}
+.title-for-home {
+    color: $black;
+    font-size: 60px;
+    margin-top: 13rem;
+    margin-bottom: 2rem;
+    line-height: 62px;
+    font-weight: 900;
+    position: relative;
+    z-index: 1;
+    font-style: normal;
+
+    @include small {
+        margin-top: 5rem;
+        font-size: 40px;
+        line-height: 42px;
+        text-align: center;
+    }
+    &::before {
+        position: absolute;
+        content: '';
+        display: inline-block;
+        width: 62%;
+        height: 20px;
+        top: 37px;
+        left: 5px;
+        background-color: $colorBarTitles;
+        z-index: -1;
+
+        @include small {
+            top: 20px;
+            left: 65px;
+            width: 60%;
+        }
+    }
+}
+.btm-title {
+    position: relative;
+    z-index: 1;
+    &::before {
+        position: absolute;
+        content: '';
+        display: inline-block;
+        width: 98%;
+        height: 20px;
+        top: 37px;
+        left: 5px;
+        background-color: $colorBarTitles;
+        z-index: -1;
+
+        @include small {
+            top: 20px;
+            left: 2px;
+        }
+    }
+}
+h1 {
+    color: $black;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 62px;
+    margin: 30px 0;
+}
+.heading {
+    h2 {
+        position: relative;
+        z-index: 1;
+        &::before {
+            position: absolute;
+            content: '';
+            display: inline-block;
+            width: 160px;
+            height: 20px;
+            top: 65px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: $colorBarTitles;
+            z-index: -1;
+        }
+    }
+}
+.list-acseo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    p {
+        a {
+            margin: 0 20px;
+            padding: 10px 25px;
+            text-decoration: none;
+            color: #C4C4C4;
+            border: 2px solid #C4C4C4;
+            border-radius: 20px;
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 700;
+            min-width: 170px;
+            display: inline-block;
+            text-align: center;
+            &:hover {
+                background-color: $blueDark;
+                border: 2px solid $blueDark;
+                color: $white;
+            }
+        }
+        .list-actif {
+            background-color: $blueDark;
+            color: $white;
+            border: 2px solid $blueDark;
+        }
+    }
+}
+.last-container {
+    h2 {
+        &::before {
+            width: 18%;
+            top: 20%;
+            left: 50%;
+        }
+    }
+}
+.bloc-cercle {
+    position: relative;
+    .cercle {
+        position: absolute;
+        width: 170px;
+        height: 170px;
+        left: 50%;
+        bottom: 80%;
+        transform: translateX(-50%);
+        background-color: $white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.history-acseo {
+    @include small {
+        text-align: center;
+    }
+}
+.btn-mobile {
+    @include small {
+        text-align: center !important;
+    }
+}
+.link-pink {
+    color: $pink;
+    text-decoration: underline;
+    &:hover {
+        color: $blueLight;
+    }
+}
+.logo-img {
+    @include small {
+        img {
+            height: 35px;
+        }
+    }
+}
+
+/**********Slick carousel **********/
+.car-for-slick {
+    @include small {
+        display: flex;
+        flex-direction: column;
+    }
+    .for-slick {
+        height: 300px;
+        border-radius: 50px;
+        background-color: $white;
+        margin: 11rem 1rem 1rem 1rem;
+        padding: 5rem 3rem;
+        text-align: center;
+    }
+}
+.slick-dots {
+    li {
+        button {
+            &::before {
+                content: "" !important; 
+                background-color: $black;
+                width: 10px;
+                height: 10px;
+                border-radius: 50px;
+            }
+        }
+    }
+    .slick-active {
+        button {
+            &::before {
+                background-color: $blueLight;
+            }
+            
+        }
+    }
+}
+
+/* Header et menu de navigation */
+/*********** Home page ************/
+body {
+    .bloc-menu-navigation {
+        justify-content: center;
+        .nav-item {
+            .for-border-left {
+                border-right: 1px solid $blueExtraLight;
+                color: $black;
+                padding: 10px 20px;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px;
+                @include small {
+                    border-right: none;
+                }
+                &:hover {
+                    color: $pink;
+                    text-decoration: underline;
+                }
+            }
+            .item-blog {
+                padding: 10px 20px;
+                color: $black;
+                &:hover {
+                color: $pink;
+                text-decoration: underline;
+                }
+            }
+        }
+        .btn-nav {
+            margin-left: 50px;
+            @include small {
+               margin-left: 0;
+            }
+        }
+    }
+    .pink-button {
+        @include pink-button-style();
+        @include small {
+            text-align: center;
+        }
+    } 
+    .header-img {
+        @include small {
+            display: none;
+        }
+    }
+}
+/******** Bloc realisation *******/
+.bloc-realisation {
+    .card {
+        position: relative;
+    }
+    .card-body {
+        position: absolute;
+        bottom: 0;
+    }
+}
+.icon-fleche {
+    display: block;
+    text-align: right;
+    margin-right: 30px;
+    @include small {
+        text-align: center;
+        margin: 0;
+    }
+    a {
+        padding-right: 20px;
+        display: inline-block;
+        img {
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
+}
+
+/********* Bloc Technologies ************/
+.logos-technos {
+    .col {
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0;
+        p {
+            color: $white;
+            margin: 20px 0;
+        }
+        .nodejs-logo {
+            @include small {
+                width: 122px;
+            }
+        }
+    }
+    .col:nth-child(1) {
+        background-color: $black;
+    }
+    .col:nth-child(2) {
+        background-color: $blueExtraLight;
+    }
+    .col:nth-child(3) {
+        background-color: $greenNodeJs;
+    }
+    .col:nth-child(4){
+        background-color: $greenVueJs;
+    }
+}
+
+/********* Bloc témoignages **************/
+.bloc-temoignages {
+    position: relative;
+    max-width: 15rem !important;
+    margin-top: 5rem;
+    border-radius: 30px;
+    img {
+        width: 100px;
+        height: auto;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 75%;
+    }
+    p {
+        margin-top: 2rem;
+    }
+    span {
+        font-size: 12px;
+    }
+}
+
+/******** Bloc Blog ACSEO ********/
+.blog-title{
+    color: $blueLight;
+}
+.blog {
+    display: flex;
+    justify-content: space-between;
+
+    img:hover {
+        opacity: 0.6;
+    }
+}
+
+/******* Expertise page ********/
+.header-expertise {
+    background-color: $blueDark;
+    padding: 70px;
+    img {
+        float: right;
+    }
+}
+.for-expertise {
+    h2 {
+        margin-top: 70px;
+        &::before {
+            width: 57%;
+            top: 70%;
+            left: 29%;
+        }
+    }
+}
+.section-expertise {
+    padding: 7rem 0;
+    background-color: $fondColor;
+    .bloc-expertise {
+        background-color: $white;
+        border-radius: 20px;
+        margin: 10px;
+        padding: 8rem 3rem 2rem 2rem;
+        height: 500px;
+    }
+}
+
+/******** technos & CMS page ********/
+.bloc-logo-technos-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 310px;
+    margin: 10px;
+}
+.bloc-logo-technos-1 {
+    background-color: $black; 
+}
+.bloc-logo-technos-2 {
+    background-color: #41B883;
+}
+.bloc-logo-technos-3 {
+    background-color: #54C5F8;
+}
+.bloc-logo-technos-4 {
+    background-color: #83CD29;
+}
+.bloc-logo-technos-5 {
+    background-color: #007DA1;
+}
+.bloc-logo-technos-6 {
+    background-color: #61DAFB;
+}
+.bloc-logo-technos-7 {
+    background-color: #0087BE;
+}
+.bloc-logo-technos-8 {
+    background-color: #3FB499;
+}
+.bloc-logo-technos-9 {
+    background-color: #95BF47;
+}
+.bloc-logo-technos-10 {
+    background-color: #7F54B3;
+}
+.bloc-logo-technos-11 {
+    background-color: #A5DBE8;
+}
+
+/******* Realisations page **********/
+.bloc-r-1 {
+    .col-right {
+        background-color: $blueDark;
+        color: $white;
+        padding: 20px;
+        border-radius: 30px;
+        p{
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 26px;
+            margin-bottom: 10px;
+        }
+        span {
+            display: inline-block;
+            margin-bottom: 60px;
+            position: relative;
+
+            &::before {
+                position: absolute;
+                content: '';
+                width: 100px;
+                height: 1px;
+                top: 60px;
+                left: 0;
+                background-color: $white;
+            }
+        }
+
+    }
+}
+.bloc-r-2 {
+    .col-right-2 {
+        margin-top: 4rem;
+        padding: 7rem 4rem 4rem 4rem;
+        text-align: center;
+        border-radius: 30px;
+    }
+    .col-right-3 {
+        margin-top: 30px;
+        padding: 3rem;
+        background-color: $blueDark;
+        text-align: center;
+        border-radius: 30px;
+        color: $white;
+        p {
+            font-size: 45px;
+            font-style: normal;
+            font-weight: 700;
+        }
+    }
+}
+.icon-pre-next {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.for-border {
+    border-top: 2px solid #F5F5F5;
+    border-bottom: 2px solid #F5F5F5;
+}
+
+/**** Agence page *******/
+
+
+/******** Equipe page ********/
+.team-members {
+    img {
+        cursor: pointer;
+        &:hover {
+            filter: contrast(0.5);
+        }
+    }
+}
+
+/****blog****/
+.col-blog-1 {
+    margin-right: 10px;
+
+    .content-blog {
+        margin-left: 10rem;
+    }
+}
+.col-blog-2 {
+    margin-left: 10px;
+}
+
+/******* Contact page ********/
+.form-container {
+    @include small {
+        > div {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px !important;
+        }
+    }
+    .form-contact {
+        @include small {
+            width: 100%;
+        }
+        h1 {
+            @include small {
+                margin-top: 0;
+                font-size: 45px;
+                text-align: center;
+            }
+        }
+        .bloc-tel {
+            @include small {
+                flex-direction: column;
+            }
+        }
+        h3 {
+            color: #007C9F;
+            @include small {
+                text-align: center;
+            }
+        }
+        p {
+            margin: 2rem 0 3rem 0;
+            font-weight: 600;
+        }
+        .form-control {
+            border: 1px solid #dee2e6;
+            border-radius: 30px;
+        }
+        label {
+            font-weight: 600;
+        }
+        input:focus {
+            border-color: $pink !important;
+            box-shadow: none;
+        }
+        textarea:focus {
+            border-color: $pink !important;
+            box-shadow: none;
+        }
+        button {
+            background-color: $pink;
+            border-radius: 30px;
+            border: 2px solid $pink;
+            font-size: 20px;
+            font-weight: 600;
+            &:hover {
+                background-color: transparent;
+                color: $pink;
+                border: 2px solid $pink;
+    
+            }
+        }
+    }
+    .bloc-infos {
+        @include small {
+            width: 100%;
+        }
+        > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 5rem 2rem 2rem 3rem;
+            border-radius: 30px;
+    
+            .logo-acseo {
+                margin-bottom: 4rem;
+            }
+            .list {
+                margin-bottom: 3rem;
+                border-radius: 30px;
+                text-align: center;
+                width: 90%;
+                font-size: 20px;
+                font-weight: 600;
+                &:focus {
+                    border-color: 1px solid $pink !important;
+                    box-shadow: none;
+                }
+            }
+            .coordonnes {
+                margin-bottom: 2rem;
+                line-height: 20px;
+            }
+            .socil-media {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               gap: 15px;
+            }
+        }
+    }
+}
+
+/****** footer ********/
+footer {
+    background-color: $blueDark;
+    padding: 50px 0;
+    color: $white;
+    @include small {
+        padding: 20px 0;
+    }
+    .container-footer {
+        @include small {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .col:nth-child(2), .col:nth-child(3), .col:nth-child(4) {
+            padding-left: 70px;
+            @include small {
+                padding: 0;
+            }
+        }
+        .col-logo {
+            padding-right: 50px;
+            @include small {
+                padding: 0;
+            }
+        }
+        .bloc-col-footer {
+            border-right: 1px solid $blueExtraLight;
+            @include small {
+                border-right: none;
+                border-bottom: 1px solid $blueExtraLight;
+                text-align: center;
+                margin: 20px 0;
+            }
+            a {
+                color: $white;
+                text-decoration: none;
+            }
+            .socil-media-footer {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: 15px;
+
+                @include small {
+                    justify-content: center;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        .last-col-footer {
+            a {
+                color: $white;
+                text-decoration: none;
+            }
+            @include small {
+                text-align: center;
+            }
+        }
+    }
+}
+.footer-btm {
+    @include small {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    p {
+        margin: 10px 0;
+        font-weight: 600;
+        @include small {
+            text-align: center;
+            margin-top: 20px;
+        }
+    }
+    .legals {
+        text-align: right;
+        @include small {
+            text-align: center;
+        }
+        a {
+            color: $black;
+            text-decoration: none;
+        }
+    }
+}
+
+
+
